@@ -64,8 +64,12 @@ extern "C" {
     (defined _XOPEN_SOURCE  && _XOPEN_SOURCE >= 500) || \
     (defined _ISOC99_SOURCE && _ISOC99_SOURCE) || \
     (defined _POSIX_C_SOURCE && _POSIX_C_SOURCE >= 200112L) || \
-    C99
-    #define HAVE_SNPRINTF 1
+	C99
+    
+    // Xanadu RA6M5 toolchain does not have snprinf defined
+    #ifndef HAVE_SNPRINTF
+        #define HAVE_SNPRINTF 1
+    #endif
 #endif
 
 #if (defined _POSIX_C_SOURCE && _POSIX_C_SOURCE >= 200112L)
